@@ -1,6 +1,8 @@
 package packet.chapter01;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class UsingTheSafeVarargsAnnotation {
 
@@ -14,16 +16,16 @@ public class UsingTheSafeVarargsAnnotation {
         displayElements(a1, a2, 12);
 
         //There's More: An example of heap pollution
-//        List<String> list1 = new ArrayList<>();
-//        list1.add("One");
-//        list1.add("Two");
-//        list1.add("Three");
-//        List<String> list2 = new ArrayList<>();
-//        list2.add("Four");
-//        list2.add("Five");
-//        list2.add("Six");
-//
-//        merge(list1, list2);
+        List<String> list1 = new ArrayList<>();
+        list1.add("One");
+        list1.add("Two");
+        list1.add("Three");
+        List<String> list2 = new ArrayList<>();
+        list2.add("Four");
+        list2.add("Five");
+        list2.add("Six");
+
+        merge(list1, list2);
 
     }
 
@@ -34,11 +36,11 @@ public class UsingTheSafeVarargsAnnotation {
         }
     }
 
-//    @SafeVarargs // Not actually safe!
-//    static void merge(List<String>... stringLists) {
-//        Object[] array = stringLists;
-//        List<Integer> tmpList = Arrays.asList(42);
-//        array[0] = tmpList; // Semantically invalid, but compiles without warnings
-//        String element = stringLists[0].get(0); // runtime  ClassCastException
-//    }
+    @SafeVarargs // Not actually safe!
+    static void merge(List<String>... stringLists) {
+        Object[] array = stringLists;
+        List<Integer> tmpList = Arrays.asList(42);
+        array[0] = tmpList; // Semantically invalid, but compiles without warnings
+        String element = stringLists[0].get(0); // runtime  ClassCastException
+    }
 }

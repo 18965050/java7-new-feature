@@ -6,7 +6,7 @@ import java.nio.file.Path;
 public class UnderstandingPaths {
 
     public static void main(String[] args) {
-        Path path = FileSystems.getDefault().getPath("/home/docs/status.txt");
+        Path path = FileSystems.getDefault().getPath("F:/github/java7/java7-new-features/src/main/resources/chapter1/users.txt");
         System.out.println();
         System.out.printf("toString: %s\n", path.toString());
         System.out.printf("getFileName: %s\n", path.getFileName());
